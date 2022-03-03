@@ -1,7 +1,13 @@
 # Negative Samples-enhanced Graph Convolutional Neural Networks
 Graph Convolutional Neural Networks (GCNs) have been generally accepted to be an effective tool for node representations learning. An interesting way to understand GCNs is to think of them as a message passing mechanism where each node updates its representation by accepting information from its neighbours (also known as positive samples). However, beyond these neighbouring nodes, graphs have a large, dark, all-but forgotten world in which we find the non-neighbouring nodes (negative samples).
 
-This repository is the official implementation of several Negative Samples-enhanced Graph Convolutional Neural Networks, which can be run directly on Google colab.
+We are the first to fuse negative samples into the graph convolution, yielding several new GCNs boosted by negative samples to improve the quality of node representations and alleviate the over-smoothing problem.
+
+This repository is the official implementation of several methods to obtain negative samples and put them into convolutional operation, which can run directly on Google colab.
+
+The vector form of a layer in Negative Samples-enhanced Graph Convolutional Neural Networks can be defined as this:
+
+where $\overline{{\mathcal{N}}_i}$ is the negative samples of node $i$ and $\beta$ is a hyper-parameter to balance the contribution of the negative samples.
 
 # 1. NegGCN (MCGCN) 
 The first method is based on Monte Carlo chains. We propose a Negative Samples-enhanced Graph Convolutional Neural Networks (NegGCNs), where the negatively sampled nodes are directly incorporated into the message passing mechanism and used to update new node feature vectors. 
