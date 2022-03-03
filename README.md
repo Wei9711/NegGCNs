@@ -12,8 +12,7 @@ The vector form of a layer in Negative Samples-enhanced Graph Convolutional Neur
 where $\overline{{\mathcal{N}}_i}$ is the negative samples of node $i$ and $\beta$ is a hyper-parameter to balance the contribution of the negative samples.
 
 # 1. NegGCN (MCGCN) 
-The first method is based on Monte Carlo chains. We propose a Negative Samples-enhanced Graph Convolutional Neural Networks (NegGCNs), where the negatively sampled nodes are directly incorporated into the message passing mechanism and used to update new node feature vectors. 
-
+The first method is based on Monte Carlo chains. 
 This work "Negative Samples-enhanced Graph Convolutional Neural Networks" appeared in the 16-th International Conference on Intelligent Systems and Knowledge Engineering  (ISKE 2021)
 
 ![NegGcn](NegGCN(MCGCN).jpg)
