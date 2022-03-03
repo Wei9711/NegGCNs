@@ -25,3 +25,11 @@ The concept of DPP-based negative sampling. The target node is Node 1. Nodes 2, 
 The third method is based on decomposed determinant point process. We used quality-diversity decomposition in determinant point processes (DPP) to obtain diverse negative samples. When defining a distribution on diverse subsets of all non-neighbouring nodes, we incorporate both graph structure information and node representations. Since the DPP sampling process requires matrix eigenvalue decomposition, we propose a new shortest-path-base method to improve the computational efficiency.
 
 This work has submitted to TNNLS and is under review.
+
+<div align = center><img src="Spath.png" width="600"></div>
+
+Illustration of the motivation of this work. Left: For a given node, its first-order neighbours can be seen as positive samples.  Right: we compute the shortest path of the given node to other nodes. Different path lengths form concentric circles with different radii. Using DPP to select negative samples from different circles can get nodes for different clusters.
+
+<div align = center><img src="Spath-Negative.png" width="300"></div>
+
+Taking the given point as the center of the circle, different path lengths form concentric circles with different radii. All reachable nodes $V_{r}$ can be divided into different sets $N_{l}$ based on the path length. We choose a random point in the node set $N_{l}$ of each length for starting $l = 2$, and the selected nodes and their first-order adjacent nodes become the candidates set $S_i$
