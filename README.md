@@ -15,6 +15,6 @@ The second method is based on  determinant point process (DPP). DPP helpl to get
 
 This work "Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples" appeared in 36-th AAAI Conference on Artificial Intelligence (AAAI 2022)
 
-![D2GCN](D2GCN-DFS.png)
+<div align = center><img src="D2GCN-DFS.png" width="400">
 
 The concept of DPP-based negative sampling. The target node is Node 1. Nodes 2, 3 and 4 are positive samples. Nodes 5-18 are the dark world of Node 1. The 4-length DFS path of Node 1 is $\{3, 5, 11, 13\}$, where $\{5, 11, 13\}$ are the central nodes on the path in the dark world. With their first-order neighbouring nodes, they form the candidate set of DPPs, i.e.$\{5,6,7,11,12,13,14,18\}$. The selected negative samples from this set are 6, 11, and 18, which can be seen as virtual negative links to Node 1.
