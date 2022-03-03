@@ -7,6 +7,8 @@ This repository is the official implementation of several methods to obtain nega
 
 The vector form of a layer in Negative Samples-enhanced Graph Convolutional Neural Networks can be defined as this:
 
+<div align = center><img src="Vector-NegGCN.png" width="400"></div>
+
 where $\overline{{\mathcal{N}}_i}$ is the negative samples of node $i$ and $\beta$ is a hyper-parameter to balance the contribution of the negative samples.
 
 # 1. NegGCN (MCGCN) 
