@@ -23,7 +23,7 @@ Mechanism of the negative sampling graph convolution}. The central node is $v=5$
 # 2. D2GCN (DFS-DPP-GCN) 
 The second method is based on determinant point process (DPP). DPP helps to get good negative samples, which contribute negative information to the give node contrast to its positive samples and include as much information as possible to reflect the variety of the dark world.
 
-This work "Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples" appeared in the 36-th AAAI Conference on Artificial Intelligence (AAAI 2022)
+This work [Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples](https://aaai-2022.virtualchair.net/poster_aaai4442) appeared in the 36-th AAAI Conference on Artificial Intelligence (AAAI 2022)
 
 <div align = center><img src="D2GCN-DFS.png" width="400"></div>
 
