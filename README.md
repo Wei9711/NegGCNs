@@ -13,7 +13,8 @@ where $\overline{{\mathcal{N}}_i}$ is the negative samples of node $i$ and $\bet
 
 # 1. NegGCN (MCGCN) 
 The first method is based on Monte Carlo chains. The negative samples were sampled using the method in [Understanding Negative Sampling in Graph Representation Learning](https://arxiv.org/pdf/2005.09863.pdf)
-This work "Negative Samples-enhanced Graph Convolutional Neural Networks" appeared in the 16-th International Conference on Intelligent Systems and Knowledge Engineering  (ISKE 2021)
+
+This work [Negative Samples-enhanced Graph Convolutional Neural Networks](https://ieeexplore.ieee.org/document/9755440) appeared in the 16-th International Conference on Intelligent Systems and Knowledge Engineering  (ISKE 2021)
 
 ![NegGcn](NegGCN(MCGCN).jpg)
 
