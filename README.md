@@ -45,7 +45,7 @@ This work [Learning from the Dark: Boosting Graph Convolutional Neural Networks 
 
 The concept of DPP-based negative sampling. The target node is Node 1. Nodes 2, 3 and 4 are positive samples. Nodes 5-18 are the dark world of Node 1. The 4-length DFS path of Node 1 is {3, 5, 11, 13}, where {5, 11, 13} are the central nodes on the path in the dark world. With their first-order neighbouring nodes, they form the candidate set of DPPs, i.e.{5,6,7,11,12,13,14,18}. The selected negative samples from this set are 6, 11, and 18, which can be seen as virtual negative links to Node 1.
 
-# 3. SDGCN (Shortest path-DPP-GCN)[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fobrHmuNvnGvg-6ZlRIc1thfxc6uq4g-?usp=sharing)
+# 3. SDGCN (Shortest path-DPP-GCN) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fobrHmuNvnGvg-6ZlRIc1thfxc6uq4g-?usp=sharing)
 
 The third method is based on decomposed determinant point process. We used quality-diversity decomposition in determinant point processes (DPP) to obtain diverse negative samples. When defining a distribution on diverse subsets of all non-neighbouring nodes, we incorporate both graph structure information and node representations. Since the DPP sampling process requires matrix eigenvalue decomposition, we propose a new shortest-path-base method to improve the computational efficiency.
 
