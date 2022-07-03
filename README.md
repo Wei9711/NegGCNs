@@ -18,7 +18,8 @@ $\beta$
 is a hyper-parameter to balance the contribution of the negative samples.
 
 
-# 1. NegGCN (MCGCN) 
+# 1. NegGCN (MCGCN) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HuIDqZHDZutKRzwH4menhgYVEQsjun9a?usp=sharing)
+
 The first method is based on Monte Carlo chains. The negative samples were sampled using the method in [Understanding Negative Sampling in Graph Representation Learning](https://arxiv.org/pdf/2005.09863.pdf)
 
 This work [Negative Samples-enhanced Graph Convolutional Neural Networks](https://ieeexplore.ieee.org/document/9755440) appeared in the 16-th International Conference on Intelligent Systems and Knowledge Engineering  (ISKE 2021)
