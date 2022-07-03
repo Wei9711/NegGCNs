@@ -30,7 +30,7 @@ Mechanism of the negative sampling graph convolution}. The central node is
 $v=5$
 and 
 $f(\cdot)$
-is graph convolution layer\cite{kipf2016semi}. Node 4, 7 are directly linked with node 5 by real positive edges, thus positive sampling convolution is performed by $x_{pos}=f(4,7,5).$ 
+is graph convolution layer. Node 4, 7 are directly linked with node 5 by real positive edges, thus positive sampling convolution is performed by $x_{pos}=f(4,7,5).$ 
 Node 3, 8 are negative sampled using MCNS methods, which based on Markov chain MonteCarlo methods and DFS, message passing to central node $v=5$ 
 along virtual imaginary edges, then negative sampling convolution is performed by $x_{neg}=f(3,8).$ 
 Given a certain negative rate $\beta$, 
