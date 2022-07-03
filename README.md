@@ -35,7 +35,7 @@ along virtual imaginary edges, then negative sampling convolution is performed b
 Given a certain negative rate $\beta$, 
 we get negative sampling graph convolution result of this layer, i.e. $x^{'} = x_{pos} -\beta x_{neg} $ 
 
-# 2. D2GCN (DFS-DPP-GCN) 
+# 2. D2GCN (DFS-DPP-GCN)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1jYKH9KaozAewr56ttqxB3I_NsWLUKhnM/view?usp=sharing)
 The second method is based on determinant point process (DPP). DPP helps to get good negative samples, which contribute negative information to the give node contrast to its positive samples and include as much information as possible to reflect the variety of the dark world.
 
 This work [Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples](https://aaai-2022.virtualchair.net/poster_aaai4442) appeared in the 36-th AAAI Conference on Artificial Intelligence (AAAI 2022)
