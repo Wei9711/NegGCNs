@@ -1,9 +1,9 @@
 # Negative Samples-enhanced Graph Convolutional Neural Networks
-Graph Convolutional Neural Networks (GCNs) have been generally accepted to be an effective tool for node representations learning. An interesting way to understand GCNs is to think of them as a message passing mechanism where each node updates its representation by accepting information from its neighbours (also known as positive samples). However, beyond these neighbouring nodes, graphs have a large, dark, all-but forgotten world in which we find the non-neighbouring nodes (negative samples).
+Graph Convolutional Neural Networks (GCNs) have been generally accepted to be an effective tool for node representation learning. An interesting way to understand GCNs is to think of them as a message-passing mechanism where each node updates its representation by accepting information from its neighbours (also known as positive samples). However, beyond these neighbouring nodes, graphs have a large, dark, all-but-forgotten world in which we find the non-neighbouring nodes (negative samples).
 
 We are the first to fuse negative samples into the graph convolution, yielding several new GCNs boosted by negative samples to improve the quality of node representations and alleviate the over-smoothing problem.
 
-This repository is the official implementation of several methods to obtain negative samples and put them into convolutional operation, which can run directly on Google colab.
+This repository is the official implementation of several methods to obtain negative samples and put them into convolutional operation, which can run directly on Google Colab.
 
 The vector form of a layer in Negative Samples-enhanced Graph Convolutional Neural Networks can be defined as this:
 
@@ -11,7 +11,7 @@ The vector form of a layer in Negative Samples-enhanced Graph Convolutional Neur
 
 
 where $\overline{{\mathcal{N}}_{i}}$ 
-is the negative samples of node 
+is the negative sample of node 
 $i$ 
 and 
 $\beta$ 
@@ -30,14 +30,14 @@ Mechanism of the negative sampling graph convolution}. The central node is
 $v=5$
 and 
 $f(\cdot)$
-is graph convolution layer. Node 4, 7 are directly linked with node 5 by real positive edges, thus positive sampling convolution is performed by $x_{pos}=f(4,7,5).$ 
-Node 3, 8 are negative sampled using MCNS methods, which based on Markov chain MonteCarlo methods and DFS, message passing to central node $v=5$ 
+is graph convolution layer. Nodes 4, and 7 are directly linked with node 5 by real positive edges. Thus, positive sampling convolution is performed by $x_{pos}=f(4,7,5).$ 
+Node 3, and 8 are negative sampled using MCNS methods, which are based on Markov chain Monte-Carlo methods and DFS, message passing to central node $v=5$ 
 along virtual imaginary edges, then negative sampling convolution is performed by $x_{neg}=f(3,8).$ 
 Given a certain negative rate $\beta$, 
-we get negative sampling graph convolution result of this layer, i.e. $x^{'} = x_{pos} -\beta x_{neg} $ 
+we get the negative sampling graph convolution result of this layer, i.e. $x^{'} = x_{pos} -\beta x_{neg} $ 
 
 # 2. D2GCN (DFS-DPP-GCN)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1jYKH9KaozAewr56ttqxB3I_NsWLUKhnM/view?usp=sharing)
-The second method is based on determinant point process (DPP). DPP helps to get good negative samples, which contribute negative information to the give node contrast to its positive samples and include as much information as possible to reflect the variety of the dark world.
+The second method is based on the Determinant Point Process (DPP). DPP helps to get good negative samples, which contribute negative information to the given node in contrast to its positive samples and include as much information as possible to reflect the variety of the dark world.
 
 This work [Learning from the Dark: Boosting Graph Convolutional Neural Networks with Diverse Negative Samples](https://aaai-2022.virtualchair.net/poster_aaai4442) appeared in the 36-th AAAI Conference on Artificial Intelligence (AAAI 2022)
 
@@ -47,14 +47,14 @@ The concept of DPP-based negative sampling. The target node is Node 1. Nodes 2, 
 
 # 3. SDGCN (Shortest path-DPP-GCN) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fobrHmuNvnGvg-6ZlRIc1thfxc6uq4g-?usp=sharing)
 
-The third method is based on decomposed determinant point process. We used quality-diversity decomposition in determinant point processes (DPP) to obtain diverse negative samples. When defining a distribution on diverse subsets of all non-neighbouring nodes, we incorporate both graph structure information and node representations. Since the DPP sampling process requires matrix eigenvalue decomposition, we propose a new shortest-path-base method to improve the computational efficiency.
+The third method is based on the decomposed determinant point process. We used quality-diversity decomposition in determinant point processes (DPP) to obtain diverse negative samples. When defining a distribution on diverse subsets of all non-neighbouring nodes, we incorporate both graph structure information and node representations. Since the DPP sampling process requires matrix eigenvalue decomposition, we propose a new shortest-path-base method to improve the computational efficiency.
 
-This work has submitted to TNNLS and is under review.
+This work [GNNs with Diverse Negative Samples via Decomposed DPP](https://arxiv.org/abs/2212.02055) has been accepted by IEEE TNNLS on 30-Aug-2023.
 
 <div align = center><img src="Spath.png" width="600"></div>
 
-Illustration of the motivation of this work. Left: For a given node, its first-order neighbours can be seen as positive samples.  Right: we compute the shortest path of the given node to other nodes. Different path lengths form concentric circles with different radii. Using DPP to select negative samples from different circles can get nodes for different clusters.
+Illustration of the motivation of this work. Left: For a given node, its first-order neighbours can be seen as positive samples.  Right: We compute the shortest path of the given node to other nodes. Different path lengths form concentric circles with different radii. Using DPP to select negative samples from different circles can get nodes for different clusters.
 
 <div align = center><img src="Spath-Negative.png" width="300"></div>
 
-Taking the given point as the center of the circle, different path lengths form concentric circles with different radii. All reachable nodes $V_{r}$ can be divided into different sets $N_{l}$ based on the path length. We choose a random point in the node set $N_{l}$ of each length for starting $l = 2$, and the selected nodes and their first-order adjacent nodes become the candidates set $S_i$
+Taking the given point as the circle's centre, different path lengths form concentric circles with different radii. All reachable nodes $V_{r}$ can be divided into different sets $N_{l}$ based on the path length. We choose a random point in the node-set $N_{l}$ of each length for starting $l = 2$, and the selected nodes and their first-order adjacent nodes become the candidates set $S_i$
