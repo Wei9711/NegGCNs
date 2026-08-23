@@ -17,6 +17,13 @@ and
 $\beta$ 
 is a hyper-parameter to balance the contribution of the negative samples.
 
+| # | Model | Venue | Code |
+| --- | --- | --- | --- |
+| 1 | [NegGCN (MCGCN)](#1-neggcn-mcgcn-) | ISKE 2021 | [1NegGCN](1NegGCN) |
+| 2 | [D2GCN (DFS-DPP-GCN)](#2-d2gcn-dfs-dpp-gcn-) | AAAI 2022 | [2D2GCN](2D2GCN) |
+| 3 | [SDGCN (Shortest path-DPP-GCN)](#3-sdgcn-shortest-path-dpp-gcn-) | IEEE TNNLS 2023 | [3SDGCN](3SDGCN) |
+| 4 | [LDGCN (Layer-diverse Negative Sampling)](#4-ldgcn-layer-diverse-negative-sampling-for-gnns) | TMLR 2024 | [4LDGCN](4LDGCN) |
+
 
 # 1. NegGCN (MCGCN) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1HuIDqZHDZutKRzwH4menhgYVEQsjun9a?usp=sharing)
 
@@ -58,3 +65,34 @@ Illustration of the motivation of this work. Left: For a given node, its first-o
 <div align = center><img src="Spath-Negative.png" width="300"></div>
 
 Taking the given point as the circle's centre, different path lengths form concentric circles with different radii. All reachable nodes $V_{r}$ can be divided into different sets $N_{l}$ based on the path length. We choose a random point in the node-set $N_{l}$ of each length for starting $l = 2$, and the selected nodes and their first-order adjacent nodes become the candidates set $S_i$
+
+# 4. LDGCN (Layer-diverse Negative Sampling for GNNs)
+
+The fourth method is **layer-diverse DPP sampling**. Previous negative-sampling methods treat the samples in each GNN layer as independent, so the selected nodes still contain a large amount of redundancy across layers (more than 75% overlap in prior DPP-based models). LDGCN uses the sampling matrix in a determinantal point process to map the candidate set into a space, then applies **space squeezing** so that dimensions corresponding to the previous layer's negative samples are suppressed. This reduces the chance of selecting the same nodes again and covers more of the graph with fewer samples.
+
+These negative samples are used in message passing, yielding Layer-diverse GCN (**LDGCN**). The same sampler also works with GATv2, GIN, and GraphSAGE.
+
+This work [Layer-diverse Negative Sampling for Graph Neural Networks](https://openreview.net/forum?id=WOrdoKbxh6) has been accepted by *Transactions on Machine Learning Research* (TMLR) in 2024. ([arXiv](https://arxiv.org/abs/2403.11408))
+
+Code: [4LDGCN](4LDGCN)
+
+```bash
+python LDGCN.py --dataset Cora --sample_rate 0.1 --num_layers 4
+```
+
+<div align="center"><img src="LayerDiverse1.jpg" width="900"></div>
+
+Negative samples from layer-diverse DPP sampling. (a) For a given node in a graph, its first-order neighbours can be thought of as *positive samples*, despite the fact that these neighbours may belong to different clusters. (b) The shortest-path algorithm calculates the shortest path from a given node to other nodes in the graph to obtain smaller, yet more efficient candidate sets for further sampling. (c) As the candidate set is significantly larger than the number of negative samples needed, the ideal subset of negative samples is not unique. By using the layer-diverse DPP sampling method to select negative samples, it is possible to include as much information from the entire graph as possible while also reducing redundancy among negative samples in different layers.
+
+## Citation
+
+```bibtex
+@article{duan2024layerdiverse,
+  title={Layer-diverse Negative Sampling for Graph Neural Networks},
+  author={Duan, Wei and Lu, Jie and Wang, Yu Guang and Xuan, Junyu},
+  journal={Transactions on Machine Learning Research},
+  year={2024},
+  url={https://openreview.net/forum?id=WOrdoKbxh6}
+}
+```
+
