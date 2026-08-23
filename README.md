@@ -78,6 +78,11 @@ Code: [4LDGCN](4LDGCN)
 
 ```bash
 python LDGCN.py --dataset Cora --sample_rate 0.1 --num_layers 4
+
+# Large OGB graphs
+cd ogbn
+python LDGCN_arxiv.py --sample_rate 0.001 --num_layers 4
+python LDGCN_mag.py --sample_rate 0.001 --num_layers 4
 ```
 
 <div align="center"><img src="LayerDiverse1.jpg" width="900"></div>

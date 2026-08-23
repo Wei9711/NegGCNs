@@ -22,6 +22,8 @@ Negative samples from layer-diverse DPP sampling. (a) For a given node in a grap
 | `LDGATV2.py` | GATv2 | Layer-diverse sampling with GATv2 |
 | `LDGIN.py` | GIN | Layer-diverse sampling with GIN |
 | `LDSAGE.py` | GraphSAGE | Layer-diverse sampling with GraphSAGE |
+| `ogbn/LDGCN_arxiv.py` | GCN | LDGCN on ogbn-arxiv |
+| `ogbn/LDGCN_mag.py` | GCN | LDGCN on the ogbn-mag paper citation graph |
 
 ## Requirements
 
@@ -35,7 +37,7 @@ Negative samples from layer-diverse DPP sampling. (a) For a given node in a grap
 pip install -r requirements.txt
 ```
 
-Planetoid / Amazon / Coauthor datasets are downloaded automatically by PyTorch Geometric.
+Planetoid / Amazon / Coauthor datasets are downloaded automatically by PyTorch Geometric. OGB scripts also need `ogb`.
 
 ## Usage
 
@@ -49,7 +51,17 @@ python LDGIN.py --dataset Cora
 python LDSAGE.py --dataset Cora
 ```
 
-Supported datasets: `Cora`, `Citeseer`, `Pubmed`, `Computers`, `Photo`, `CS`.
+Supported citation / coauthor datasets: `Cora`, `Citeseer`, `Pubmed`, `Computers`, `Photo`, `CS`.
+
+### OGBN (large graphs)
+
+```bash
+cd ogbn
+python LDGCN_arxiv.py --sample_rate 0.001 --num_layers 4 --runs 10 --epochs 500
+python LDGCN_mag.py --sample_rate 0.001 --num_layers 4 --runs 5 --epochs 400
+```
+
+Shortest-path candidate dictionaries are cached under `ogbn/cache/` on the first run. Use `--save` to write logs under `ogbn/Result/`.
 
 | Argument | Default | Description |
 | --- | --- | --- |
